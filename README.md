@@ -92,7 +92,7 @@ Deployed and integrated Suricata Network Intrusion Detection System (NIDS) with 
 ```yaml
 vars:
   address-groups:
-    HOME_NET: "[10.10.10.0/24]"
+    HOME_NET: "[192.168.XXX.X/24]"
     EXTERNAL_NET: "any"
 
 default-rule-path: /etc/suricata/rules
@@ -111,7 +111,7 @@ af-packet:
 <ossec_config>
   <client>
     <server>
-      <address>10.10.10.254</address>
+      <address>192.168.XXX.X</address>
       <port>1514</port>
       <protocol>tcp</protocol>
     </server>
@@ -157,7 +157,6 @@ af-packet:
 ## Future Enhancements
 - [ ] Implement custom Suricata rules for environment-specific threats
 - [ ] Add additional network sensors for multi-segment monitoring
-- [ ] Integrate with threat intelligence platforms (MISP, AlienVault OTX)
 - [ ] Develop automated response playbooks for common threats
 - [ ] Implement traffic baseline analysis and anomaly detection
 - [ ] Add packet capture (PCAP) functionality for forensic analysis
@@ -169,9 +168,9 @@ af-packet:
 
 ## Environment Specifications
 - **Hypervisor**: Proxmox VE
-- **Suricata VM**: 2 vCPU, 2GB RAM, 20GB storage
+- **Suricata VM**: 4 vCPU, 4GB RAM, 32GB storage
 - **Wazuh Manager**: OVA deployment
-- **Network**: Single bridge (vmbr0) - 192.168.254.0/24
+- **Network**: Single bridge (vmbr0) - 192.168.XXX.X/24
 
 ## Note
 All IP addresses shown have been replaced with placeholders for my own peace of mind.
