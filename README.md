@@ -24,13 +24,38 @@ Deployed and integrated Suricata Network Intrusion Detection System (NIDS) with 
 
 ### Network Topology
 ```
-┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐
-│   Endpoint VM   │◄────►│  Suricata VM    │◄────►│   Wazuh Manager │
-│  (Monitored)    │      │  (Network IDS)  │      │     (SIEM)      │
-└─────────────────┘      └─────────────────┘      └─────────────────┘
-         │                        │                         │
-         └────────────────────────┴─────────────────────────┘
-                          vmbr0 (Virtual Bridge)
+                              ┌──────────────────────────┐
+                              │   Physical Network       │
+                              │   Router/Gateway         │
+                              │   IP: 192.168.254.1      │
+                              └────────────┬─────────────┘
+                                           │
+                     ┌─────────────────────┼─────────────────────┐
+                     │                     │                     │
+                     │ WiFi                │ Ethernet            │
+                     │                     │                     │
+          ┌──────────▼──────────┐   ┌──────▼──────────────────────────────┐
+                Desktop PC                Proxmox Host (Physical Server)   
+               (Windows 11)                       vmbr0 Bridge
+                                                    PROMISC           
+            Physical Endpoint       └──────┬───────────┬──────────┬───────┘
+                                           │           │          │
+            WiFi: 192.168.254.Y            │           │          │
+                                    ┌──────▼─────┐ ┌───▼────┐ ┌──▼────────┐
+              Wazuh Agent #3          Wazuh Mgr     Suricata    Parrot OS 
+                 Monitored              (SIEM)       (IDS)      (Pwnbox)  
+          └─────────────────────┘                                  
+                                        enp6s18      enp6s19     enp6s20   
+                                        .254.Y       .254.X      .254.Z    
+                                                                
+                                        Manager        IDS       Agent #2 
+                                       Dashboard      Agent1     HTB Work 
+                                        Indexer      PROMISC        
+                                    └─────┬──────┘ └───┬─────┘ └────┬──────┘
+                                          │            │           │
+                                          │    Wazuh Agents        │
+                                          │  Forward Logs/Alerts   │
+                                          └────────────┴───────────┘
 ```
 
 ### Component Details
