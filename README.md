@@ -27,7 +27,7 @@ Deployed and integrated Suricata Network Intrusion Detection System (NIDS) with 
                               ┌──────────────────────────┐
                               │   Physical Network       │
                               │   Router/Gateway         │
-                              │   IP: 192.168.254.1      │
+                              │   IP: 192.168.XXX.X      │
                               └────────────┬─────────────┘
                                            │
                      ┌─────────────────────┼─────────────────────┐
@@ -40,22 +40,22 @@ Deployed and integrated Suricata Network Intrusion Detection System (NIDS) with 
                                                     PROMISC           
             Physical Endpoint       └──────┬───────────┬──────────┬───────┘
                                            │           │          │
-            WiFi: 192.168.254.Y            │           │          │
+            WiFi: 192.168.XXX.Y            │           │          │
                                     ┌──────▼─────┐ ┌───▼────┐ ┌──▼────────┐
               Wazuh Agent #3          Wazuh Mgr     Suricata    Parrot OS 
                  Monitored              (SIEM)       (IDS)      (Pwnbox)  
           └─────────────────────┘                                  
                                         enp6s18      enp6s19     enp6s20   
-                                        .254.Y       .254.X      .254.Z    
+                                        .XXX.Y       .XXX.X      .XXX.Z    
                                                                 
                                         Manager        IDS       Agent #2 
                                        Dashboard      Agent1     HTB Work 
                                         Indexer      PROMISC        
                                     └─────┬──────┘ └───┬─────┘ └────┬──────┘
-                                          │            │           │
-                                          │    Wazuh Agents        │
-                                          │  Forward Logs/Alerts   │
-                                          └────────────┴───────────┘
+                                          │            │            │
+                                          │    Wazuh Agents         │
+                                          │  Forward Logs/Alerts    │
+                                          └────────────┴────────────┘
 ```
 
 ### Component Details
