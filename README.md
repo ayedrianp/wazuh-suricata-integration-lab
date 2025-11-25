@@ -40,7 +40,7 @@ Deployed and integrated Suricata Network Intrusion Detection System (NIDS) with 
                                                     PROMISC           
             Physical Endpoint       └──────┬───────────┬──────────┬───────┘
                                            │           │          │
-            WiFi: 192.168.XXX.Y            │           │          │
+            WiFi: 192.168.XXX.XY           │           │          │
                                     ┌──────▼─────┐ ┌───▼────┐ ┌──▼────────┐
               Wazuh Agent #3          Wazuh Mgr     Suricata    Parrot OS 
                  Monitored              (SIEM)       (IDS)      (Pwnbox)  
